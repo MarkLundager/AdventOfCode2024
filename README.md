@@ -1,4 +1,4 @@
-to run locally on computer:
+##to run locally on computer:
 
 1. git clone the repository to desired location.
 2. create config.h file in repository at root directory
