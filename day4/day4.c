@@ -66,7 +66,7 @@ int solve(){
     for(int i = 0; i<LINE_SIZE; i++){
         fgets(matrix[i], LINE_SIZE_EXTRACT, file);
     }
-
+    fclose(file);
     for(int i = 0; i <LINE_SIZE; i++){
         for(int j = 0; j<LINE_SIZE; j++){
             for(int k = 0; k<8; k++){
@@ -84,6 +84,7 @@ int solve(){
     for(int i = 0; i<LINE_SIZE; i++){
         free(matrix[i]);
     }
+
     free(matrix);
     printf("Part 1 result: %d\n", result);
     printf("Part 2 result: %d\n", result2);
