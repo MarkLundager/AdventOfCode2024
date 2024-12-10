@@ -86,7 +86,8 @@ int solve(){
             case 'd':
                 (dont) ? check_do(file) : check_dont(file);
         }
-    } 
+    }
+    fclose(file);
     printf("Part 1 result: %ld\n", result1);
     printf("Part 2 result: %ld\n", result2);
     return 0;

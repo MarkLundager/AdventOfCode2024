@@ -16,7 +16,7 @@ enum Direction{
 };
 
 typedef struct LinkedList_t{
-    int value;
+    int snd;
     struct LinkedList_t* next;
 }LinkedList_t;
 

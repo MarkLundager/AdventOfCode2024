@@ -56,7 +56,7 @@ int solve(){
         }
         switch(direction){
             case UNKNOWN:
-                direction = (cmp_value <0) ? DESCENDING : ASCENDING;
+                direction = (cmp_value <0) ? DESCENDING : ASCENDING; // DESC
                 break;
             case ASCENDING:
                 if(cmp_value<0){

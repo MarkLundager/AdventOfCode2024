@@ -41,6 +41,7 @@ size_t write_to_file(void *buffer, size_t size, size_t nmemb, void *userp){
 unsigned int hash_function(int key) {
     return key % HASHMAP_SIZE;
 }
+
 HashMapEntry_t* create_hash_map() {
     HashMapEntry_t *map = calloc(sizeof(HashMapEntry_t),HASHMAP_SIZE);
     return map;
@@ -90,7 +91,7 @@ void free_hashmap(HashMapEntry_t hashmap[], int size) {
 }
 void create_and_append(LinkedList_t* head, int data) {
     LinkedList_t* new_node = malloc(sizeof(LinkedList_t));
-    new_node->value = data;
+    new_node->snd = data;
     if (head == NULL) {
         head = new_node;
     } else {
@@ -100,4 +101,14 @@ void create_and_append(LinkedList_t* head, int data) {
         }
         current->next = new_node;
     }
+}
+LinkedList_t ** create_linked_list(size_t size){
+    LinkedList_t ** head = malloc(sizeof(LinkedList_t *) * size);
+    if(head == NULL){
+        perror("MALLOC FAILED");
+    }
+    for(int i = 0; i<size; i++){
+        head[i] = NULL;
+    }
+    return head;
 }
