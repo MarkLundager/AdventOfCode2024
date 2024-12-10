@@ -114,3 +114,10 @@ void free_linked_list(LinkedList_t **head) {
         current = next;
     }
 }
+
+void swap(LinkedList_t** lhs, LinkedList_t **rhs){
+    int temp;
+    temp = (*rhs)->value;
+    (*rhs)->value = (*lhs)->value;
+    (*lhs)->value = temp;
+}

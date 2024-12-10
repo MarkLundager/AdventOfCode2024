@@ -31,48 +31,39 @@ int extract_middle_value(int i, LinkedList_t * l_list){
     return temp->value;
 }
 
-void skip_line(FILE *file){
-    char buffer [BUFFER_SIZE];
-    fgets(buffer, BUFFER_SIZE, file);
-}
 
-void sort_update(LinkedList_t * l_list){
-
-}
-
-void checkrow(LinkedList_t * l_list){
-    bool correct = true;
-    int i = 0;
-    int head_value;
-    LinkedList_t * head = l_list;
-    while(head != NULL && correct){
-        LinkedList_t * tail = head->next;
-        head_value = head->value;
-        while(tail != NULL && correct){
-            LinkedList_t* rules = list[tail->value];
-            while(rules != NULL && correct){
-                if(head_value == rules->value){
-                    correct = false;
+void checkrow(LinkedList_t * l_list, int length){
+            bool correct = true;
+            int head_value;
+            LinkedList_t * head = l_list;
+restart:    while(head != NULL){
+                LinkedList_t * tail = head->next;
+                head_value = head->value;
+                while(tail != NULL){
+                    LinkedList_t* rules = list[tail->value];
+                    while(rules != NULL){
+                        if(head_value == rules->value){
+                            correct = false;
+                            swap(&head, &tail);
+                            head = l_list;
+                            goto restart;
+                        }
+                        rules = rules->next;
+                    }
+                    tail = tail->next;
                 }
-                rules = rules->next;
+                head = head->next;
             }
-            tail = tail->next;
-        }
-        head = head->next;
-        i++;
+            if(correct){
+                result += extract_middle_value(middle(length), l_list);
+            }
+            else{
+                result2 += extract_middle_value(middle(length), l_list);
+            }
     }
-    if(correct){
-        result += extract_middle_value(middle(i), l_list);
-    }
-    else{
-        sort_update(l_list);
-        result2 += extract_middle_value(middle(i), l_list);
-    }
-
-}
 
 void process_line(FILE* file){
-
+    int i = 1;
     LinkedList_t * head = NULL;
     create_and_append(&head, number);
     char buffer [BUFFER_SIZE];
@@ -84,8 +75,9 @@ void process_line(FILE* file){
         sscanf(token, "%d", &number);
         create_and_append(&head, number);
         token = strtok(NULL, ",");
+        i++;
     }
-    checkrow(head);
+    checkrow(head, i);
     free(head);
 }
 
@@ -101,7 +93,6 @@ int solve(){
                 key = number;
                 number = get_number(file ,'0');
                 create_and_append(&list[key], number);
-                skip_line(file);
                 break;
             case ',':
                 key = number;
@@ -110,6 +101,7 @@ int solve(){
     }
     fclose(file);
     printf("Part 1 result: %d\n", result);
+    printf("Part 2 result: %d\n", result2);
     return 0;
 }
 
