@@ -16,7 +16,7 @@ enum Direction{
 };
 
 typedef struct LinkedList_t{
-    int snd;
+    int value;
     struct LinkedList_t* next;
 }LinkedList_t;
 
@@ -34,11 +34,12 @@ HashMapEntry_t* create_hash_map();
 void free_hashmap(HashMapEntry_t hashmap[], int size);
 
 
-
-void create_and_append(LinkedList_t* head, int data);
+void free_linked_list(LinkedList_t **head);
+void create_and_append(LinkedList_t** head, int data);
 
 int compare(const void *a, const void*b);
 
 //data handling
 size_t read_data(unsigned short day);
 size_t write_to_file(void *buffer, size_t size, size_t nmemb, void *userp);
+LinkedList_t ** create_linked_list(size_t size);

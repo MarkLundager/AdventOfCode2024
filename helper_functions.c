@@ -89,26 +89,28 @@ void free_hashmap(HashMapEntry_t hashmap[], int size) {
     }
     free(hashmap);
 }
-void create_and_append(LinkedList_t* head, int data) {
-    LinkedList_t* new_node = malloc(sizeof(LinkedList_t));
-    new_node->snd = data;
-    if (head == NULL) {
-        head = new_node;
+void create_and_append(LinkedList_t** head, int data) {
+
+    LinkedList_t* new = malloc(sizeof(*new));
+    new->value = data;
+    new->next = NULL;
+    if (*head == NULL) {
+        *head = new;
     } else {
-        LinkedList_t* current = head;
+        LinkedList_t* current = *head;
         while (current->next != NULL) {
             current = current->next;
         }
-        current->next = new_node;
+        current->next = new;
     }
 }
-LinkedList_t ** create_linked_list(size_t size){
-    LinkedList_t ** head = malloc(sizeof(LinkedList_t *) * size);
-    if(head == NULL){
-        perror("MALLOC FAILED");
+void free_linked_list(LinkedList_t **head) {
+    LinkedList_t *current = *head;
+    LinkedList_t *next;
+
+    while (current != NULL) {
+        next = current->next;
+        free(current);
+        current = next;
     }
-    for(int i = 0; i<size; i++){
-        head[i] = NULL;
-    }
-    return head;
 }
