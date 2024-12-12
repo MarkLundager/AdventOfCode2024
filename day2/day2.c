@@ -6,9 +6,18 @@
 #include <ctype.h>
 #define LINE_SIZE (500)
 
+
+enum Direction{
+    ASCENDING,
+    DESCENDING,
+    UNKNOWN
+};
+
 static bool first = true;
 int direction = UNKNOWN;
 static bool damp = false;
+
+
 
 void reset(FILE* file, char c){
     first = true;

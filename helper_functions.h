@@ -9,16 +9,11 @@
 #define HASHMAP_SIZE (1000)
 
 
-enum Direction{
-    ASCENDING,
-    DESCENDING,
-    UNKNOWN
-};
-
 typedef struct LinkedList_t{
     int value;
     struct LinkedList_t* next;
 }LinkedList_t;
+
 
 typedef struct HashMapEntry_t{
     int key;

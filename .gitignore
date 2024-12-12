@@ -3,3 +3,4 @@ config.h
 *.o;
 /day[0-9]*/day[0-9]*
 !/day[0-9]*/day[0-9]*.c
+!/day[0-9]*/day[0-9]*.h
