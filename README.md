@@ -18,7 +18,7 @@ Perhaps writing everything in one function is something I should stop doing. Sti
 Very happy with the code, structured and concise. Not bad
 
 ## DAY4:
-For part2 I realise you could write a similar direction array as for the first part. I did it and it did not work.
+For part two I realise you could write a similar direction array as for the first part. I did it and it did not work.
 1 hour debug: I learnt that I suck at rotating objects with number representation.
 
 ## DAY5
@@ -27,7 +27,7 @@ quite the ride. Motivation still high!
 
 
 ## DAY6
-No words. I thought I had it all figured. Part 1 went very smoothly... then part 2 felt like someone shoved a glock down my mouth. I quickly thought alright,
+No words. I thought I had it all figured. Part one went very smoothly... then part two felt like someone shoved a glock down my mouth. I quickly thought alright,
 we can only place obstructions on the path taken by the guard, we cannot put an obstruction where we've already been as that would make the current path unfeasible. I get the correct input
 on the smaller input and then I experience the immeasurable joy of finding out my solution on the larger input did not work. I'm going crazy,  experimenting with different smaller inputs, ok, what if
 the loop is independant from the obstruction? Na we got that covered. After a very rough day I got it. If the guard returns to the obstruction through a different path, he walks straight through like fucking
