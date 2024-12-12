@@ -22,7 +22,7 @@ For part two I realise you could write a similar direction array as for the firs
 1 hour debug: I learnt that I suck at rotating objects with number representation.
 
 ## DAY5
-Very happy with the code. Accidentally skipped every second line on part1 and still got the correct answer, a lot of margin it seems. Made debugging part 2
+Very happy with the code. Accidentally skipped every second line on part one and still got the correct answer, a lot of margin it seems. Made debugging part two
 quite the ride. Motivation still high!
 
 
