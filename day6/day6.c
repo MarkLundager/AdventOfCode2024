@@ -185,21 +185,19 @@ void simulate_guard(int x, int y, int dx, int dy, bool obstruction_set, Prev_Pos
                 break;
             case OBSTACLE:
                 if(obstruction_set){
+                    Prev_Pos_t* head = prev_pos;
+                    while(head != NULL){
+                        if(head->x == x && head->y == y && head->dx == dx && head->dy == dy){
+                            result2++;
+                            freepos(prev_pos);
+                            return;
+                        }
+                    head = head->next;
+                    }
                     append_pos(x,y,&prev_pos, dx, dy);
                 }
                 rotate_90_cw(&dx,&dy);
                 break;
-        }
-        if(obstruction_set){
-            Prev_Pos_t* head = prev_pos;
-            while(head != NULL){
-                if(head->x == x && head->y == y && head->dx == dx && head->dy == dy){
-                    result2++;
-                    freepos(prev_pos);
-                    return;
-                }
-                head = head->next;
-            }
         }
     }
 }

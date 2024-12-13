@@ -62,8 +62,6 @@ void check_valid_line(unsigned long target, node_t* head){
     if(recursion(target, head->next, head->value)){
         add_with_overflow_check(result,target,&result);
     }
-
-        
 }
 
 void append_number(unsigned long number, node_t **head){
@@ -85,9 +83,7 @@ void append_number(unsigned long number, node_t **head){
 void process_line(FILE* file, unsigned long target){
     unsigned long number;
     char buffer[BUFFER_SIZE];
-
     fgets(buffer, BUFFER_SIZE, file);
-
     char* token = strtok(buffer, " ");
     node_t* head = NULL;
     while(token !=NULL){
