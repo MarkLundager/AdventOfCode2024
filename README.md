@@ -33,6 +33,6 @@ on the smaller input and then I experience the immeasurable joy of finding out m
 the loop is independant from the obstruction? Na we got that covered. After a very rough day I found the bug. If the guard returns to the obstruction through a different path, he walks straight through like fucking
 Juggernaut from X-MEN. Slowly losing my sanity. At least the code turned out alright and I can handle multiple guards, perhaps attempt to implement multithreaded for multiple guards?
 
-##DAY 7
+## DAY 7
 Wow the previous one made this feel great. It was evident that the you would have to use data types which can store big enough numbers, yet I succeed in declaring ONE function as int and it ruined me. I didn't understand why it did not work. I'm
 like they won't get me with that bullshit. Then I print the values and see the dogshit '-' sign and realise that they did in fact, get me with that bullshit.
