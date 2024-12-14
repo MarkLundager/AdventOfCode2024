@@ -47,7 +47,7 @@ Not very structured code but concise. Pretty straightforward.
 Perhaps writing everything in one function is something I should stop doing. Still breathing BOIS
 
 ## DAY 3:
-Very happy with the code, structured and concise. Not bad
+Happy with the code, structured and concise. Not bad
 
 ## DAY 4:
 For part two I realise you could write a similar direction array as for the first part. I did it and it did not work.
