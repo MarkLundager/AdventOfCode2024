@@ -57,10 +57,12 @@ void print_results(unsigned long result1, unsigned long result2){
             result1,result2,time_taken);
 }
 
-void print_seperate_times(double time_part_1, double time_part_2){
-    printf("Part 1 time:    %f seconds\n",time_part_1);
-    printf("Part 2 time:    %f seconds\n",time_part_2);
-    
+void print_seperate_times(){
+    double part1_time = get_time(start,end) - get_time(part2_time_s, part2_time_e);
+    double part2_time = get_time(start,end) - get_time(part1_time_s, part1_time_e);
+    printf("Part 1 time:    %f seconds\n",part1_time);
+    printf("Part 2 time:    %f seconds\n",part2_time);
+
 }
 
 

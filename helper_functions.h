@@ -12,7 +12,7 @@
 
 
 struct timespec start, end;
-
+struct timespec part1_time_s,part1_time_e,part2_time_s,part2_time_e;
 //STRUCTURES 
 typedef struct Pos_t{
     int x;
@@ -41,7 +41,7 @@ size_t write_to_file(void *buffer, size_t size, size_t nmemb, void *userp);
 //Output functions
 double get_time(struct timespec start, struct timespec end);
 void print_results(unsigned long result1, unsigned long result2);
-void print_seperate_times(double time_part_1, double time_part_2);
+void print_seperate_times();
 
 
 //-----------------data structures----------------

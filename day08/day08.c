@@ -14,7 +14,7 @@ static int row;
 static int col;
 static long result_part_1;
 static long result_part_2;
-struct timespec part1_time_s,part1_time_e,part2_time_s,part2_time_e;
+
 
 
 bool check_bound(int x, int y){
@@ -132,9 +132,6 @@ int solve(){
 }
 
 
-
-
-
 int main(){
     if(READ){
         read_data(DAY);
@@ -144,7 +141,6 @@ int main(){
     solve();
     clock_gettime(CLOCK_MONOTONIC, &end);
     print_results(result_part_1, result_part_2);
-    double part1_time = get_time(start,end) - get_time(part2_time_s, part2_time_e);
-    double part2_time = get_time(start,end) - get_time(part1_time_s, part1_time_e);
-    print_seperate_times(part1_time, part2_time);
+    
+    print_seperate_times();
 }
