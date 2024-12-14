@@ -36,10 +36,10 @@ Unless step 2 is reverted, the measured time will not be accurate as it will inc
 When relevant, the individual time is calculated as total time subtracted by parts that only involve the the other part example:  
 if total time is 100 seconds, handling data takes 80 sec, part 1 10 seconds, and part 2 20 seconds then:  
   
-time: 120 s
+time: 120 s  
 Time part 1: 90 s  
 Time part 2: 80 s  
-
+  
 Sometimes further data modification is required for a different part, however that is still counter as that's part time.
 
 ## Result format
