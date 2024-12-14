@@ -17,7 +17,8 @@ AFTER:
 
 4. Create config.h file in repository at root directory
 5. Add the line "#define SESSIONID "[Your session ID for Advent of code]" this allows for automatic retrieval of your personal input. Don't share your sessionid accidentally by forgetting to add config.h in gitignore...
-   You can retrieve your session ID by going to advent of code, inspect the webpage, applications -> cookies -> session. Copy the value into the config.h file. Please don't share this session ID with anyone.
+   You can retrieve your session ID by going to advent of code, inspect the webpage, applications -> cookies -> session. Copy the value into the config.h file. Please don't share this session ID with anyone as it could give
+   them access to your Advent Of Code account.
 
  in Config.h:
 ```c
