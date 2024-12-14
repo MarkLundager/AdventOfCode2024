@@ -38,13 +38,22 @@ void free_node(node_t** head){
         free(temp);
     }
 }
-bool recursion(unsigned long target, node_t*tail, unsigned long value){
+
+bool recursion_part1(unsigned long target, node_t*tail, unsigned long value){
+    if(tail->next == NULL){
+        return (target == value + tail->value||target == value * tail->value);
+    }
+    return (recursion_part1(target,tail->next, value + tail->value) 
+    || recursion_part1(target,tail->next, value * tail->value));
+}
+
+bool recursion_part2(unsigned long target, node_t*tail, unsigned long value){
     if(tail->next == NULL){
         return (target == value + tail->value||target == value * tail->value || target == new_operator(value, tail->value));
     }
-    return (recursion(target,tail->next, value + tail->value) 
-    || recursion(target,tail->next, value * tail->value) 
-    || recursion(target,tail->next, new_operator(value, tail->value)));
+    return (recursion_part2(target,tail->next, value + tail->value) 
+    || recursion_part2(target,tail->next, value * tail->value) 
+    || recursion_part2(target,tail->next, new_operator(value, tail->value)));
 }
 
 void check_valid_line(unsigned long target, node_t* head){
@@ -59,8 +68,11 @@ void check_valid_line(unsigned long target, node_t* head){
         }
         return;
     }
-    if(recursion(target, head->next, head->value)){
+    if(recursion_part1(target, head->next, head->value)){
         add_with_overflow_check(result,target,&result);
+    }
+    if(recursion_part2(target, head->next, head->value)){
+        add_with_overflow_check(result2,target,&result2);
     }
 }
 

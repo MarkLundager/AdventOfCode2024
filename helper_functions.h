@@ -36,7 +36,8 @@ void free_hashmap(HashMapEntry_t hashmap[], int size);
 LinkedList_t ** create_linked_list(size_t size);
 void swap(LinkedList_t** lhs, LinkedList_t **rhs);
 
-bool recursion(unsigned long target, node_t*tail,unsigned long value);
+bool recursion_part1(unsigned long target, node_t*tail,unsigned long value);
+bool recursion_part2(unsigned long target, node_t*tail,unsigned long value);
 void free_linked_list(LinkedList_t **head);
 void create_and_append(LinkedList_t** head, int data);
 

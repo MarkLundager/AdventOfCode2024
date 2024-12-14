@@ -22,8 +22,6 @@ void read_data_into_memory(int day){
 
     while ((c = fgetc(file)) != EOF){
         if(isdigit(c)){
-            unsigned long target = get_number(file,c);
-            process_line(file, target);
         }  
     }
     fclose(file);
