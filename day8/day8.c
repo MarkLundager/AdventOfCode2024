@@ -87,7 +87,7 @@ void read_data_into_memory(int day){
 }
 
 int solve(){
-    bool **arrarr = malloc(row * sizeof(*arrarr));  //Malloc should work here as it should get initalised to 0 in second call.
+    bool **arrarr = malloc(row * sizeof(*arrarr)); 
     for(int i = 0; i<row; i++){
         arrarr[i] = calloc(col, sizeof(*arrarr[i]));
     }
@@ -115,6 +115,15 @@ int solve(){
             } 
         }
     }
+
+    for(int i = 0; i<row; i++){
+        free(arrarr[i]);
+    }
+    free(arrarr);
+    for(int i = 0; i<ASCII_TABLE_SIZE; i++){
+        free_pos_list(&antennas[i]);
+    }
+    free(antennas);
     printf("Part 1 result: %ld\n", result);
     printf("Part 2 result: %ld\n", result2);
     return 0;

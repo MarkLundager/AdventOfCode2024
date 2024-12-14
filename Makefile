@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -pedantic -g
 LDFLAGS = -lcurl
 PARSER_FILES = helper_functions.c
-DAYS = $(shell seq 1 30)
+DAYS = $(shell seq 1 9)
 
 all: $(foreach DAY, $(DAYS), ./day$(DAY)/day$(DAY))
 
@@ -13,4 +13,4 @@ all: $(foreach DAY, $(DAYS), ./day$(DAY)/day$(DAY))
 test:
 	./run.sh $(DAYS)
 
-#gcc -Wall -Werror -pedantic -g -o day8 day8.c ../helperfunctions.c -lcurl
+#gcc -Wall -Werror -pedantic -g -o day9 day9.c ../helper_functions.c -lcurl
