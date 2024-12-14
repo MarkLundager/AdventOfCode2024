@@ -39,10 +39,13 @@ Time: [time for part 1 & 2 in seconds]
 [Time Part 2: [time for part 2]]  
 \---------------------------------
 
-# REFLECTIONS
+# REFLECTIONS & RESULTS
 
 ## DAY 1:
-Not very structured code but concise. Pretty straightforward.
+Not very structured code but concise. Pretty straightforward.  
+Part 1 result:  1258579  
+Part 2 result:  23981443  
+Total Time:     0.000339 seconds  
 
 ## DAY 2:
 Perhaps writing everything in one function is something I should stop doing. Still breathing BOIS
