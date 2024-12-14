@@ -3,7 +3,8 @@
 1. git clone the repository to desired location.
 2. Change "#define READ (0)" to "#define READ (1)" in the helper_functions.h file to enable input retreival with curl (for this to work, the two steps below are necessary)
 
-   in helper_functions.h:
+
+In helper_functions.h:
 
 BEFORE:
 ```c
