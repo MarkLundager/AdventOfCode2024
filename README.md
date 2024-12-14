@@ -32,8 +32,15 @@ AFTER:
 All files compiled with the flags: gcc -Wall -Werror -pedantic -g -o
 
 ## Time measurement (OBS)!!
-Unless step 2 is reverted, the measured time will not be accurate as it will include curl's retrieval from advent of code to local file. This takes around 4-5 seconds.
-When relevant, the individual time is calculated as total time subtracted by parts that only involve the the other part (naturally).
+Unless step 2 is reverted, the measured time will not be accurate as it will include curl's retrieval from advent of code to local file. This takes around 4-5 seconds. However, data management is still taken into account as that is an essential part of solving each puzzle, but waiting for curl to load the data into a file "input.txt" is not, I think?
+When relevant, the individual time is calculated as total time subtracted by parts that only involve the the other part example:  
+if total time is 100 seconds, handling data takes 80 sec, part 1 10 seconds, and part 2 20 seconds then:  
+  
+time: 120 s
+Time part 1: 90 s  
+Time part 2: 80 s  
+
+Sometimes further data modification is required for a different part, however that is still counter as that's part time.
 
 ## Result format
 The result is printed on the format below, if my solution could not calculate part 1 and 2 during the same run, individual times will be printed as well below total time. .  
@@ -100,4 +107,10 @@ Total Time:     0.000087 seconds
 Part 1 time:    0.000053 seconds  
 Part 2 time:    0.000066 seconds  
 
-##DAY 9
+## DAY 9
+Went smoothly, still traumatised by DAY 6 so this was a chill one. I just read the whole input into a buffer and had a reference to the beginning and end, when the left index found free space, it "calls" on the other index to find the next file to put in. In part 2 it was just important to keep track which files one has already used, and instead of reading those files, add "free space" which in my case was just incrementing the "new_index". Another one where it was not possible to calculate (with my soluton) both solutions at the same time. Not sure how I would optimise part 2.
+
+
+Total Time:     0.103150 seconds  
+Part 1 time:    0.000253 seconds  
+Part 2 time:    0.102921 seconds  
