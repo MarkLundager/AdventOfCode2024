@@ -2,8 +2,8 @@ CC = gcc
 CFLAGS = -Wall -Werror -pedantic -g
 LDFLAGS = -lcurl
 PARSER_FILES = helper_functions.c
-DAYS = $(shell seq 1 9)
-
+#DAYS = $(shell seq 1 9)
+DAYS = $(shell seq -w 1 10)
 all: $(foreach DAY, $(DAYS), ./day$(DAY)/day$(DAY))
 
 %: %.c $(PARSER_FILES)
