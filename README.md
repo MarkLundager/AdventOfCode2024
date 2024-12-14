@@ -40,7 +40,7 @@ time: 120 s
 Time part 1: 90 s  
 Time part 2: 80 s  
   
-Sometimes further data modification is required for a different part, however that is still counter as that's part time.
+Sometimes further data modification is required for a different part, however that still counts as that part's time.
 
 ## Result format
 The result is printed on the format below, if my solution could not calculate part 1 and 2 during the same run, individual times will be printed as well below total time. .  
