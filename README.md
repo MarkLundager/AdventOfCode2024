@@ -1,10 +1,19 @@
 ## To run locally on machine:
 
 1. git clone the repository to desired location.
-2. Change "#define READ (0)" to "#define READ (1)" to enable input retreival with curl (for this to work, the two steps below are necessary)
+2. Change "#define READ (0)" to "#define READ (1)" in the helper_functions.h file to enable input retreival with curl (for this to work, the two steps below are necessary)
+
+   in helper_functions.h:
+
+BEFORE:
 ```c
-#define READ (0) -> #define READ (1)
+#define READ (0)
 ```
+AFTER:
+```c
+#define READ (1)
+```
+
 4. Create config.h file in repository at root directory
 5. Add the line "#define SESSIONID ("you're advent of code sessionid") this allows for automatic retrieval of your personal input. Don't share your sessionid accidentally by forgetting to add config.h in gitignore...
    You can retrieve your session ID by going to advent of code, inspect the webpage, applications -> cookies -> session. Copy the value into the config.h file. Please don't share this session ID with anyone.
