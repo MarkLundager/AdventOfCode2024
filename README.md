@@ -29,7 +29,8 @@ AFTER:
 
 ## Info   (Time will not be represented correctly if curls fetches data (takes ~5 seconds), revert step 2 to see accurate time measures)
 The result is printed on the format below, if my solution could not calculate part 1 and 2 during the same run, individual times will be printed as well below total time. The individual time is calculated as total time subtracted by 
-parts that only involve the the other part (naturally).
+parts that only involve the the other part (naturally).  
+All files compiled with the flags: gcc -Wall -Werror -pedantic -g -o
 
 \-----------Day XX-----------------  
 Part 1 result: [result_value]  
@@ -43,24 +44,29 @@ Time: [time for part 1 & 2 in seconds]
 
 ## DAY 1:
 Not very structured code but concise. Pretty straightforward.  
+  
 Total Time:     0.000339 seconds  
 
 ## DAY 2:
 Perhaps writing everything in one function is something I should stop doing. Still breathing BOIS  
+    
 Total Time:     0.000511 seconds
 
 ## DAY 3:
 Happy with the code, structured and concise. Not bad  
+  
 Total Time:     0.000105 seconds
 
 ## DAY 4:
 For part two I realise you could write a similar direction array as for the first part. I did it and it did not work.
-1 hour debug: I learnt that I suck at rotating objects with number representation.  
+1 hour debug: I learnt that I suck at rotating objects with number representation.   
+  
 Total Time:     0.001140 seconds  
 
 ## DAY 5
 Very happy with the code. Accidentally skipped every second line on part one and still got the correct answer, a lot of margin it seems. Made debugging part two
 quite the ride. Motivation still high!  
+  
 Total Time:     0.036394 seconds
 
 
@@ -70,6 +76,7 @@ we can only place obstructions on the path taken by the guard, we cannot put an 
 on the smaller input and then I experience the immeasurable joy of finding out my solution on the larger input did not work. I'm going crazy,  experimenting with different smaller inputs, ok, what if
 the loop is independant from the obstruction? Na we got that covered. After a very rough day I found the bug. If the guard returns to the obstruction through a different path, he walks straight through like fucking
 Juggernaut from X-MEN. Slowly losing my sanity. At least the code turned out alright and I can handle multiple guards, perhaps attempt to implement multithreaded for multiple guards and with visuals?  
+
 Total Time:     0.080980 seconds
 
 ## DAY 7
