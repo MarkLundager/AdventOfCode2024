@@ -33,9 +33,9 @@ The result is printed on the format below, if my solution could not calculate pa
 \-----------Day XX-----------------  
 Part 1 result: [result_value]  
 Part 2 result: [result_value]  
-Time: [time for part 1 & 2 in seconds]
-[Time Part 1: [time for part 1]]
-[Time Part 2: [time for part 2]]
+Time: [time for part 1 & 2 in seconds]  
+[Time Part 1: [time for part 1]]  
+[Time Part 2: [time for part 2]]  
 \---------------------------------
 
 # REFLECTIONS
