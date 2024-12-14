@@ -38,8 +38,10 @@ typedef struct HashMapEntry_t{
 size_t read_data(unsigned short day);
 size_t write_to_file(void *buffer, size_t size, size_t nmemb, void *userp);
 
-//Solutions output
+//Output functions
+double get_time(struct timespec start, struct timespec end);
 void print_results(unsigned long result1, unsigned long result2);
+void print_seperate_times(double time_part_1, double time_part_2);
 
 
 //-----------------data structures----------------

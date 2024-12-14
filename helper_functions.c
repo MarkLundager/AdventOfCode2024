@@ -42,14 +42,25 @@ size_t write_to_file(void *buffer, size_t size, size_t nmemb, void *userp){
     return nmemb*size;
 }
 
+double get_time(struct timespec start, struct timespec end){
+        double time_taken = (end.tv_sec - start.tv_sec) + 
+                        (end.tv_nsec - start.tv_nsec) / 1e9;
+        return time_taken;
+}
+
 //print results with time.
 void print_results(unsigned long result1, unsigned long result2){
-    double time_taken = (end.tv_sec - start.tv_sec) + 
-                        (end.tv_nsec - start.tv_nsec) / 1e9;
-    printf("Part 1 result: %lu\n"
-            "Part 2 result: %lu\n"
-            "Time:          %f seconds\n",
+    double time_taken = get_time(start, end);
+    printf("Part 1 result:  %lu\n"
+           "Part 2 result:  %lu\n"
+           "Total Time:     %f seconds\n",
             result1,result2,time_taken);
+}
+
+void print_seperate_times(double time_part_1, double time_part_2){
+    printf("Part 1 time:    %f seconds\n",time_part_1);
+    printf("Part 2 time:    %f seconds\n",time_part_2);
+    
 }
 
 

@@ -15,7 +15,7 @@ bool occupied;
 static int index_reversed;
 static int index_normal;
 static int file_index_reversed;
-static char * buffer;
+static char* buffer;
 static int file_size_reversed;
 static int new_index;
 

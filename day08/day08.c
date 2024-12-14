@@ -14,6 +14,7 @@ static int row;
 static int col;
 static long result_part_1;
 static long result_part_2;
+struct timespec part1_time_s,part1_time_e,part2_time_s,part2_time_e;
 
 
 bool check_bound(int x, int y){
@@ -90,6 +91,8 @@ int solve(){
     for(int i = 0; i<row; i++){
         arrarr[i] = calloc(col, sizeof(*arrarr[i]));
     }
+    
+    clock_gettime(CLOCK_MONOTONIC, &part1_time_s);
     for(int i = 0; i<ASCII_TABLE_SIZE; i++){
         if(antennas[i] != NULL){
             find_antinodes(i, &arrarr,false);
@@ -102,6 +105,8 @@ int solve(){
             } 
         }
     }
+    clock_gettime(CLOCK_MONOTONIC, &part1_time_e);
+    clock_gettime(CLOCK_MONOTONIC, &part2_time_s);
     for(int i = 0; i<ASCII_TABLE_SIZE; i++){
         if(antennas[i] != NULL){
             find_antinodes(i, &arrarr,true);
@@ -114,7 +119,7 @@ int solve(){
             } 
         }
     }
-
+    clock_gettime(CLOCK_MONOTONIC, &part2_time_e);
     for(int i = 0; i<row; i++){
         free(arrarr[i]);
     }
@@ -127,6 +132,9 @@ int solve(){
 }
 
 
+
+
+
 int main(){
     if(READ){
         read_data(DAY);
@@ -136,4 +144,7 @@ int main(){
     solve();
     clock_gettime(CLOCK_MONOTONIC, &end);
     print_results(result_part_1, result_part_2);
+    double part1_time = get_time(start,end) - get_time(part2_time_s, part2_time_e);
+    double part2_time = get_time(start,end) - get_time(part1_time_s, part1_time_e);
+    print_seperate_times(part1_time, part2_time);
 }
