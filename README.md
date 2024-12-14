@@ -33,7 +33,7 @@ The result is printed on the format:
 \-----------Day XX-----------------  
 Part 1 result: [result_value]  
 Part 2 result: [result_value]  
-Time: [time for part 1 && 2 in seconds]  
+Time: [time for part 1 & 2 in seconds]  
 \---------------------------------
 
 # REFLECTIONS
