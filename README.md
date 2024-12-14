@@ -28,7 +28,8 @@ AFTER:
 
 
 ## Info
-The result is printed on the format below, if my solution could not calculate part 1 and 2 during the same run, individual times will be printed as well below total time.
+The result is printed on the format below, if my solution could not calculate part 1 and 2 during the same run, individual times will be printed as well below total time. The individual time is calculated as total time subtracted by 
+parts that only involve the the other part (naturally).
 
 \-----------Day XX-----------------  
 Part 1 result: [result_value]  
