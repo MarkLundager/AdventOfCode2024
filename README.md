@@ -43,24 +43,25 @@ Time: [time for part 1 & 2 in seconds]
 
 ## DAY 1:
 Not very structured code but concise. Pretty straightforward.  
-  
-Part 1 result:  1258579  
-Part 2 result:  23981443  
 Total Time:     0.000339 seconds  
 
 ## DAY 2:
-Perhaps writing everything in one function is something I should stop doing. Still breathing BOIS
+Perhaps writing everything in one function is something I should stop doing. Still breathing BOIS  
+Total Time:     0.000511 seconds
 
 ## DAY 3:
-Happy with the code, structured and concise. Not bad
+Happy with the code, structured and concise. Not bad  
+Total Time:     0.000105 seconds
 
 ## DAY 4:
 For part two I realise you could write a similar direction array as for the first part. I did it and it did not work.
-1 hour debug: I learnt that I suck at rotating objects with number representation.
+1 hour debug: I learnt that I suck at rotating objects with number representation.  
+Total Time:     0.001140 seconds  
 
 ## DAY 5
 Very happy with the code. Accidentally skipped every second line on part one and still got the correct answer, a lot of margin it seems. Made debugging part two
 quite the ride. Motivation still high!
+Total Time:     0.036394 seconds
 
 
 ## DAY 6
@@ -68,15 +69,20 @@ No words. I thought I had it all figured. Part one went very smoothly... then pa
 we can only place obstructions on the path taken by the guard, we cannot put an obstruction where we've already been as that would make the current path unfeasible. I get the correct input
 on the smaller input and then I experience the immeasurable joy of finding out my solution on the larger input did not work. I'm going crazy,  experimenting with different smaller inputs, ok, what if
 the loop is independant from the obstruction? Na we got that covered. After a very rough day I found the bug. If the guard returns to the obstruction through a different path, he walks straight through like fucking
-Juggernaut from X-MEN. Slowly losing my sanity. At least the code turned out alright and I can handle multiple guards, perhaps attempt to implement multithreaded for multiple guards and with visuals?
+Juggernaut from X-MEN. Slowly losing my sanity. At least the code turned out alright and I can handle multiple guards, perhaps attempt to implement multithreaded for multiple guards and with visuals?  
+Total Time:     0.080980 seconds
 
 ## DAY 7
 Wow the previous one made this feel great. It was evident that the you would have to use data types which can store big enough numbers, yet I succeed in declaring ONE function as int and it ruined me. I didn't understand why it did not work. I'm
-like they won't get me with that bullshit. Then I print the values and see the '-' sign and realise that they did in fact, get me with that bullshit.
+like they won't get me with that bullshit. Then I print the values and see the '-' sign and realise that they did in fact, get me with that bullshit. Also 1 second to run feels very long but not sure how to optimize.
+Total Time:     0.999355 seconds
 
 ## DAY 8
 This one was very nice apart from the fact that they actually screwed me over with result for part one & two. The way I solved it, it is not possible to calculate each result by itself. Hence I actually run the algorithm
 twice to generate the result for part one and two which sucks. Had I gone with a linked list then it would have been possible but linked list was less efficient as you would have to iterate through every unique 
-antinode to make sure you don't add duplicate ones. I think the time complexity for simply checking a unique value would become O((N*N+1)/2) (?) which for my input would be 50721  (318 \* 319 / 2)  for part one and 634501  (1126 \* 1127 / 2)  . Instead I just used a 2d array of boolean values and when I placed an antinode, I simply put that coordinate to true. Then iterate through the list which is of size ASCII_TABLE_SIZE * ASCII_TABLE_SIZE  (128 \* 128)  which is 16384. Hence, I can't justify changing it :(
+antinode to make sure you don't add duplicate ones. I think the time complexity for simply checking a unique value would become O((N*N+1)/2) (?) which for my input would be 50721  (318 \* 319 / 2)  for part one and 634501  (1126 \* 1127 / 2)  . Instead I just used a 2d array of boolean values and when I placed an antinode, I simply put that coordinate to true. Then iterate through the list which is of size ASCII_TABLE_SIZE * ASCII_TABLE_SIZE  (128 \* 128)  which is 16384. Hence, I can't justify changing it :(  
+Total Time:     0.000087 seconds
+Part 1 time:    0.000053 seconds
+Part 2 time:    0.000066 seconds
 
 ##DAY 9
