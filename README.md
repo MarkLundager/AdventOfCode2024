@@ -33,7 +33,7 @@ All files compiled with the flags: gcc -Wall -Werror -pedantic -g -o
 
 ## Time measurement (OBS)!!
 Unless step 2 is reverted, the measured time will not be accurate as it will include curl's retrieval from advent of code to local file. This takes around 4-5 seconds. However, data management is still taken into account as that is an essential part of solving each puzzle, but waiting for curl to load the data into a file "input.txt" is not, I think?
-When relevant, the individual time is calculated as total time subtracted by parts that only involve the the other part example:  
+When relevant, the individual time for a part of the puzzle is calculated as total time subtracted by parts that only involve the the other part. An example:  
 if total time is 100 seconds, handling data takes 80 sec, part 1 10 seconds, and part 2 20 seconds then:  
   
 time: 120 s  
