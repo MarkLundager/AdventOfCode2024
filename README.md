@@ -37,3 +37,10 @@ Juggernaut from X-MEN. Slowly losing my sanity. At least the code turned out alr
 ## DAY 7
 Wow the previous one made this feel great. It was evident that the you would have to use data types which can store big enough numbers, yet I succeed in declaring ONE function as int and it ruined me. I didn't understand why it did not work. I'm
 like they won't get me with that bullshit. Then I print the values and see the '-' sign and realise that they did in fact, get me with that bullshit.
+
+## DAY 8
+This one was very nice apart from the fact that they actually screwed me over with result for part one & two. The way I solved it, it is not possible to calculate each result by itself. Hence I actually run the algorithm
+twice to generate the result for part one and two which sucks. Had I gone with a linked list then it would have been possible but linked list was less efficient as you would have to iterate through every unique 
+antinode to make sure you don't add duplicate ones. I think the time complexity for simply checking a unique value would become O((N*N+1)/2) (?) which for my input would be 50721 \*(318 * 319 / 2)\* for part one and 634501 \*(1126 * 1127 / 2)\* . Instead I just used a 2d array of boolean values and when I placed an antinode, I simply put that coordinate to true. Then iterate through the list which is of size ASCII_TABLE_SIZE * ASCII_TABLE_SIZE \*(128*128)\* which is 16384. Hence I can't justify changing it :(
+
+##DAY 9
