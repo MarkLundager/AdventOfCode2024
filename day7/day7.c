@@ -76,21 +76,6 @@ void check_valid_line(unsigned long target, node_t* head){
     }
 }
 
-void append_number(unsigned long number, node_t **head){
-    node_t *new_node = malloc(sizeof(*new_node));
-    new_node->next = NULL;
-    new_node->value = number;
-    node_t* current = *head;
-    if(*head == NULL){
-        *head = new_node;
-        return;
-    }
-    while(current->next != NULL){
-        current = current->next;
-    }
-    current->next = new_node;
-}
-
 
 void process_line(FILE* file, unsigned long target){
     unsigned long number;
@@ -100,7 +85,7 @@ void process_line(FILE* file, unsigned long target){
     node_t* head = NULL;
     while(token !=NULL){
         sscanf(token, "%lu",&number);
-        append_number(number, &head);
+        append(&head,number);
         token = strtok(NULL, " ");
     }
     check_valid_line(target, head);

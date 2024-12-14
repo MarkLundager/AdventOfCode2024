@@ -7,9 +7,7 @@
 #include <unistd.h> 
 #include<stdbool.h>
 
-int compare (const void *a, const void*b){
-    return(*(int*)a - *(int*)b);
-}
+
 size_t read_data(unsigned short day){
     // char path[MAX_PATH_SIZE];
     // snprintf(path, MAX_PATH_SIZE, "./day%d/%s",day,INPUT_FILE);
@@ -37,16 +35,17 @@ size_t read_data(unsigned short day){
 size_t write_to_file(void *buffer, size_t size, size_t nmemb, void *userp){
     return fwrite(buffer, size, nmemb, (FILE*)userp);
 }
-unsigned int hash_function(int key) {
-    return key % HASHMAP_SIZE;
-}
 
-HashMapEntry_t* create_hash_map() {
-    HashMapEntry_t *map = calloc(sizeof(HashMapEntry_t),HASHMAP_SIZE);
+// HASHMAP functions:
+unsigned int hash_function(int key, size_t size) {
+    return key % size;
+}
+HashMapEntry_t* create_hash_map(size_t size) {
+    HashMapEntry_t *map = calloc(sizeof(HashMapEntry_t), size);
     return map;
 }
-int lookup_and_add(HashMapEntry_t *hash_map, int key, bool bool_add){
-    int hashed_key = key % HASHMAP_SIZE;
+int lookup_and_add(HashMapEntry_t *hash_map, int key, bool bool_add, size_t size){
+    int hashed_key = key % size;
     HashMapEntry_t* entry = &hash_map[hashed_key];
     while (entry){
         if(entry->init == false && bool_add){
@@ -77,8 +76,8 @@ int lookup_and_add(HashMapEntry_t *hash_map, int key, bool bool_add){
     }
     return 0;
 }
-void free_hashmap(HashMapEntry_t hashmap[], int size) {
-    for (int i = 0; i < HASHMAP_SIZE; i++) {
+void free_hashmap(HashMapEntry_t hashmap[], size_t size) {
+    for (int i = 0; i < size; i++) {
         HashMapEntry_t* current = (&hashmap[i])->next;
         while (current != NULL) {
             HashMapEntry_t *next = current->next;
@@ -88,24 +87,29 @@ void free_hashmap(HashMapEntry_t hashmap[], int size) {
     }
     free(hashmap);
 }
-void create_and_append(LinkedList_t** head, int data) {
 
-    LinkedList_t* new = malloc(sizeof(*new));
-    new->value = data;
-    new->next = NULL;
-    if (*head == NULL) {
-        *head = new;
-    } else {
-        LinkedList_t* current = *head;
-        while (current->next != NULL) {
-            current = current->next;
-        }
-        current->next = new;
+
+
+// Linked_list functions:
+void append(node_t **head, unsigned long number){
+    node_t *new_node = malloc(sizeof(*new_node));
+    new_node->next = NULL;
+    new_node->value = number;
+
+    if(*head == NULL){
+        *head = new_node;
+        return;
     }
+    node_t* current = *head;
+    while(current->next != NULL){
+        current = current->next;
+    }
+    current->next = new_node;
 }
-void free_linked_list(LinkedList_t **head) {
-    LinkedList_t *current = *head;
-    LinkedList_t *next;
+
+void free_linked_list(node_t **head) {
+    node_t *current = *head;
+    node_t *next;
 
     while (current != NULL) {
         next = current->next;
@@ -114,9 +118,18 @@ void free_linked_list(LinkedList_t **head) {
     }
 }
 
-void swap(LinkedList_t** lhs, LinkedList_t **rhs){
+void swap(node_t** lhs, node_t **rhs){
     int temp;
     temp = (*rhs)->value;
     (*rhs)->value = (*lhs)->value;
     (*lhs)->value = temp;
+}
+
+
+//          DAY X HELPER FUNCTIONS:
+
+
+//DAY 1:
+int compare (const void *a, const void*b){
+    return(*(int*)a - *(int*)b);
 }

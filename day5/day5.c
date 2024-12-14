@@ -8,7 +8,7 @@
 #define BUFFER_SIZE (500)
 #define DIR_SIZE (100)
 #define middle(x) ((x) / 2)
-static LinkedList_t** list;
+static node_t** list;
 static int number;
 static int key;
 static char c;
@@ -23,8 +23,8 @@ int get_number(FILE* file, char nbr){
     return number;
 }
 
-int extract_middle_value(int i, LinkedList_t * l_list){
-    LinkedList_t * temp = l_list;
+int extract_middle_value(int i, node_t * l_list){
+    node_t * temp = l_list;
     for(int j = 0; j<i; j++){
         temp = temp->next;
     }
@@ -32,15 +32,15 @@ int extract_middle_value(int i, LinkedList_t * l_list){
 }
 
 
-void checkrow(LinkedList_t * l_list, int length){
+void checkrow(node_t * l_list, int length){
             bool correct = true;
             int head_value;
-            LinkedList_t * head = l_list;
+            node_t * head = l_list;
 restart:    while(head != NULL){
-                LinkedList_t * tail = head->next;
+                node_t * tail = head->next;
                 head_value = head->value;
                 while(tail != NULL){
-                    LinkedList_t* rules = list[tail->value];
+                    node_t* rules = list[tail->value];
                     while(rules != NULL){
                         if(head_value == rules->value){
                             correct = false;
@@ -64,8 +64,8 @@ restart:    while(head != NULL){
 
 void process_line(FILE* file){
     int i = 1;
-    LinkedList_t * head = NULL;
-    create_and_append(&head, number);
+    node_t * head = NULL;
+    append(&head, number);
     char buffer [BUFFER_SIZE];
 
     fgets(buffer, BUFFER_SIZE, file);
@@ -73,7 +73,7 @@ void process_line(FILE* file){
 
     while(token != NULL){
         sscanf(token, "%d", &number);
-        create_and_append(&head, number);
+        append(&head, number);
         token = strtok(NULL, ",");
         i++;
     }
@@ -92,7 +92,7 @@ int solve(){
             case '|':
                 key = number;
                 number = get_number(file ,'0');
-                create_and_append(&list[key], number);
+                append(&list[key], number);
                 break;
             case ',':
                 key = number;

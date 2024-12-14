@@ -3,14 +3,14 @@
 #include "../helper_functions.h"
 #include<unistd.h>
 #include<stdbool.h>
-
+#define HASHMAP_SIZE (1000)
 #define NBR_ARRAYS (2)
 #define ARRAY_SIZE (1000)
 static int** arrarr;
 static HashMapEntry_t* map; 
 
 int solve(){
-    map = create_hash_map();
+    map = create_hash_map(HASHMAP_SIZE);
     arrarr = malloc(NBR_ARRAYS * sizeof(int*));
     int counter = 0;
     long result_part_1 = 0;
@@ -27,7 +27,7 @@ int solve(){
     } 
     while(fscanf(file, "%d", &arrarr[counter][values[counter]]) == 1){
         if(counter%NBR_ARRAYS == 1){
-            lookup_and_add(map,arrarr[counter][values[counter]], true);
+            lookup_and_add(map,arrarr[counter][values[counter]], true, HASHMAP_SIZE);
         }
         values[counter] ++;
         counter ++;
@@ -40,7 +40,7 @@ int solve(){
     }
     for(int i = 0; i<values[0]; i++){
         result_part_1 += abs(arrarr[0][i] - arrarr[1][i]);
-        result_part_2 += (arrarr[0][i] * lookup_and_add(map, arrarr[0][i], false));
+        result_part_2 += (arrarr[0][i] * lookup_and_add(map, arrarr[0][i], false, HASHMAP_SIZE));
     }
     printf("Part 1 result: %ld\n", result_part_1);
     printf("Part 2 result: %ld\n", result_part_2);

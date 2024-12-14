@@ -9,6 +9,8 @@
 
 #define DAY (8)
 #define BUFFER_SIZE (5000)
+#define ASCII_TABLE_SIZE (128)
+node_t* antennas;
 static long result;
 static long result2;
 
@@ -17,6 +19,7 @@ static long result2;
 
 void read_data_into_memory(int day){
     // read_data(day);
+    antennas = malloc(sizeof(node_t) * ASCII_TABLE_SIZE);
     char c;
     FILE* file = fopen(INPUT_FILE,"r");
 
