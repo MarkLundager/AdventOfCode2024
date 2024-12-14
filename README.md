@@ -28,7 +28,7 @@ AFTER:
 
 
 ## Info
-The result is printed on the format:
+The result is printed on the format below, if my solution could not calculate part 1 and 2 during the same run, individual times will be printed as well below total time.
 
 \-----------Day XX-----------------  
 Part 1 result: [result_value]  
