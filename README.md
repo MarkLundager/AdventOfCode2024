@@ -36,8 +36,6 @@ Part 2 result: [result_value]
 Time: [time for part 1 && 2 in seconds]  
 \---------------------------------
 
-Some times the result of part 1 & 2 can be calculated during the same run of the algorithm and then the time reflects each part individually.
-
 # REFLECTIONS
 
 ## DAY 1:
