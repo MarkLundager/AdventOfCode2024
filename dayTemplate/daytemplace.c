@@ -8,8 +8,8 @@
 #include <limits.h>
 
 #define DAY (10)
-static long result;
-static long result2;
+static long result_part_1;
+static long result_part_2;
 
 
 

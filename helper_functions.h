@@ -8,6 +8,7 @@
 #define INPUT_FILE ("input.txt")
 #define MAX_URL_SIZE (500)
 #define MAX_PATH_SIZE (500)
+#define READ (0)
 
 
 struct timespec start, end;
