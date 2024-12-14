@@ -9,15 +9,15 @@
 
 #define DAY (7)
 #define BUFFER_SIZE (5000)
-static unsigned long result;
-static unsigned long result2;
+static unsigned long result_part_1;
+static unsigned long result_part_2;
 
 
-unsigned long add_with_overflow_check(unsigned long a, unsigned long b, unsigned long *result) {
+unsigned long add_with_overflow_check(unsigned long a, unsigned long b, unsigned long *result_part_1) {
     if (a > ULLONG_MAX - b) {
         return 1;
     }
-    *result = a + b;
+    *result_part_1 = a + b;
     return 0;
 }
 
@@ -64,15 +64,15 @@ void check_valid_line(unsigned long target, node_t* head){
     if(head->next == NULL){
         printf("ONLY ONE NUMBER!?\n");
         if(target == head->value){
-            result ++;
+            result_part_1 ++;
         }
         return;
     }
     if(recursion_part1(target, head->next, head->value)){
-        add_with_overflow_check(result,target,&result);
+        add_with_overflow_check(result_part_1,target,&result_part_1);
     }
     if(recursion_part2(target, head->next, head->value)){
-        add_with_overflow_check(result2,target,&result2);
+        add_with_overflow_check(result_part_2,target,&result_part_2);
     }
 }
 
@@ -101,8 +101,7 @@ unsigned long get_number(FILE* file, char nbr){
     return number;
 }
 
-void read_data_into_memory(int day){
-    read_data(day);
+void read_data_into_memory(){
     char c;
     FILE* file = fopen(INPUT_FILE,"r");
 
@@ -117,13 +116,17 @@ void read_data_into_memory(int day){
 }
 
 int solve(){
-    printf("Part 1 result: %lu\n", result);
-    printf("Part 2 result: %lu\n", result2);
     return 0;
 }
 
 
 int main(){
-    read_data_into_memory(DAY);
+    if(READ){
+        read_data(DAY);
+    }
+    clock_gettime(CLOCK_MONOTONIC, &start);
+    read_data_into_memory();
     solve();
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    print_results(result_part_1, result_part_2);
 }

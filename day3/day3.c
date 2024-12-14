@@ -4,6 +4,7 @@
 #include<unistd.h>
 #include<stdbool.h>
 #include <ctype.h>
+#define DAY (3)
 
 static char mul_string[] = "mul(,)";
 static char dont_string[] = "don't()";
@@ -11,8 +12,8 @@ static char do_string[] = "do()";
 static bool dont = false;
 static int lhs;
 static int rhs;
-static long result1;
-static long result2;
+static long result_part_1;
+static long result_part_2;
 
 int get_number(FILE* file){
     char c;
@@ -66,9 +67,9 @@ void check_mul(FILE* file){
                 break;
             case ')':
                 if(!dont){
-                    result2 += rhs * lhs;
+                    result_part_2 += rhs * lhs;
                 }
-                result1 += rhs*lhs;
+                result_part_1 += rhs*lhs;
                 break;
         }
     }
@@ -88,13 +89,16 @@ int solve(){
         }
     }
     fclose(file);
-    printf("Part 1 result: %ld\n", result1);
-    printf("Part 2 result: %ld\n", result2);
     return 0;
 }
 
 
 int main(){
-    read_data(3);
+    if(READ){
+        read_data(DAY);
+    }
+    clock_gettime(CLOCK_MONOTONIC, &start);
     solve();
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    print_results(result_part_1, result_part_2);
 }

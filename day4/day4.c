@@ -5,10 +5,11 @@
 #include<stdbool.h>
 #include <ctype.h>
 #include <string.h>
-
+#define DAY (4)
 #define LINE_SIZE (140)
 #define LINE_SIZE_EXTRACT (150)
 #define WORD_LENGTH (4)
+
 static int directions[8][2] = {
         {0, 1},  
         {0, -1}, 
@@ -26,8 +27,8 @@ static int bullshit_directions[4][4] = {
         { 1,   -1,  -1,   -1}
         };
 static char xmas[] = "XMAS";
-static int result;
-static int result2;
+static int result_part_1;
+static int result_part_2;
 char **matrix;
 
 bool checkbounds(int i, int j){
@@ -42,7 +43,7 @@ void checkdumbshit(int i, int j){
             && matrix[i-bullshit_directions[k][0]][j-bullshit_directions[k][1]] == 'M'
             && matrix[i-bullshit_directions[k][2]][j-bullshit_directions[k][3]] == 'M')
             {
-                result2 ++;
+                result_part_2 ++;
             }
     }
 }
@@ -55,7 +56,7 @@ void check(int i, int j, int di, int dj){
             return;
         }
     }
-    result++;
+    result_part_1++;
 }
 int solve(){
     FILE* file = fopen(INPUT_FILE,"r");
@@ -86,13 +87,16 @@ int solve(){
     }
 
     free(matrix);
-    printf("Part 1 result: %d\n", result);
-    printf("Part 2 result: %d\n", result2);
     return 0;
 }
 
 
 int main(){
-    read_data(4);
+    if(READ){
+        read_data(DAY);
+    }
+    clock_gettime(CLOCK_MONOTONIC, &start);
     solve();
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    print_results(result_part_1, result_part_2);
 }

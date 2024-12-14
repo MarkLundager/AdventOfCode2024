@@ -9,8 +9,8 @@
 #define DAY (9)
 #define MAX_BUFFER_SIZE (32000)
 #define MAX_FILE_SIZE (9)
-static long result;
-static long result2;
+static long result_part_1;
+static long result_part_2;
 bool occupied;
 static int index_reversed;
 static int index_normal;
@@ -20,10 +20,26 @@ static int file_size_reversed;
 static int new_index;
 
 
+void append_reverse_part2(int free_space){
+    while(free_space && index_reversed > index_normal){
+        if(file_size_reversed>0){
+            result_part_1 += new_index * file_index_reversed;
+            new_index ++;
+            file_size_reversed--;
+            free_space --;
+        }
+        else{
+            index_reversed = index_reversed - 2;
+            file_size_reversed = buffer[index_reversed] -'0';
+            file_index_reversed --;
+        }
+    }
+}
+
 void append_reverse(int free_space, bool last){
     while(free_space && index_reversed > index_normal){
         if(file_size_reversed>0){
-            result += new_index * file_index_reversed;
+            result_part_1 += new_index * file_index_reversed;
             new_index ++;
             file_size_reversed--;
             free_space --;
@@ -35,18 +51,15 @@ void append_reverse(int free_space, bool last){
         }
     }
     while(file_size_reversed && last){
-        result += new_index * file_index_reversed;
+        result_part_1 += new_index * file_index_reversed;
         new_index ++;
         file_size_reversed--;
     }
-
-    
 }
 
 
 
-void read_data_into_memory(int day){
-    // read_data(day);
+void read_data_into_memory(){
     int file_size = 0;
     int free_space = 0;
     int file_index = 0;
@@ -66,7 +79,8 @@ void read_data_into_memory(int day){
         file_size = buffer[index_normal] - '0';
 
         for(int i = 0; i < file_size; i++){
-            result += new_index * file_index;
+            result_part_1 += new_index * file_index;
+            result_part_2 += new_index * file_index;
             new_index ++;
         }
 
@@ -92,14 +106,17 @@ void read_data_into_memory(int day){
 }
 
 int solve(){
-    printf("\n");
-    printf("Part 1 result: %ld\n", result);
-    printf("Part 2 result: %ld\n", result2);
     return 0;
 }
 
 
 int main(){
-    read_data_into_memory(DAY);
+    if(READ){
+        read_data(DAY);
+    }
+    clock_gettime(CLOCK_MONOTONIC, &start);
+    read_data_into_memory();
     solve();
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    print_results(result_part_1, result_part_2);
 }

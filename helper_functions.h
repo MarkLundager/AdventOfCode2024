@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "config.h"
-#include<stdbool.h>
+#include <stdbool.h>
+#include <time.h>
 #define DOMAIN_URL ("https://adventofcode.com/2024/day/")
 #define ENDPOINT ("/input")
 #define INPUT_FILE ("input.txt")
@@ -8,6 +10,7 @@
 #define MAX_PATH_SIZE (500)
 
 
+struct timespec start, end;
 
 //STRUCTURES 
 typedef struct Pos_t{
@@ -33,6 +36,9 @@ typedef struct HashMapEntry_t{
 //Input retrieval
 size_t read_data(unsigned short day);
 size_t write_to_file(void *buffer, size_t size, size_t nmemb, void *userp);
+
+//Solutions output
+void print_results(unsigned long result1, unsigned long result2);
 
 
 //-----------------data structures----------------

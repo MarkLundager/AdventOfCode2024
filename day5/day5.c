@@ -8,12 +8,14 @@
 #define BUFFER_SIZE (500)
 #define DIR_SIZE (100)
 #define middle(x) ((x) / 2)
+#define DAY (5)
+
 static node_t** list;
 static int number;
 static int key;
 static char c;
-static int result;
-static int result2;
+static int result_part_1;
+static int result_part_2;
 
 int get_number(FILE* file, char nbr){
     int number = (nbr-'0');
@@ -55,10 +57,10 @@ restart:    while(head != NULL){
                 head = head->next;
             }
             if(correct){
-                result += extract_middle_value(middle(length), l_list);
+                result_part_1 += extract_middle_value(middle(length), l_list);
             }
             else{
-                result2 += extract_middle_value(middle(length), l_list);
+                result_part_2 += extract_middle_value(middle(length), l_list);
             }
     }
 
@@ -81,7 +83,13 @@ void process_line(FILE* file){
     free(head);
 }
 
+
+
 int solve(){
+    list = malloc(sizeof(*list) * DIR_SIZE);
+    for(int i = 0; i<DIR_SIZE; i++){
+        list[i] = NULL;
+    }
     FILE* file = fopen(INPUT_FILE,"r");
     while ((c = fgetc(file)) != EOF){
         if(isdigit(c)){
@@ -100,23 +108,20 @@ int solve(){
         }
     }
     fclose(file);
-    printf("Part 1 result: %d\n", result);
-    printf("Part 2 result: %d\n", result2);
+    for(int i = 0; i<DIR_SIZE; i++){
+        free_linked_list(&list[i]);
+    }
+    free(list);
     return 0;
 }
 
 
 int main(){
-    read_data(5);
-
-    list = malloc(sizeof(*list) * DIR_SIZE);
-    for(int i = 0; i<DIR_SIZE; i++){
-        list[i] = NULL;
+    if(READ){
+        read_data(DAY);
     }
+    clock_gettime(CLOCK_MONOTONIC, &start);
     solve();
-    for(int i = 0; i<DIR_SIZE; i++){
-        free_linked_list(&list[i]);
-    }
-    free(list);
-
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    print_results(result_part_1, result_part_2);
 }

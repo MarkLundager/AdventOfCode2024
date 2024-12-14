@@ -5,7 +5,9 @@
 #include<stdbool.h>
 #include <ctype.h>
 #define LINE_SIZE (500)
-
+#define DAY (2)
+static int result_part_1 = 0;
+static int result_part_2 = 0;
 
 enum Direction{
     ASCENDING,
@@ -33,8 +35,7 @@ int solve(){
     FILE* file = fopen(INPUT_FILE,"r");
     char c;
     int number = 0;
-    int safe_reports = 0;
-    int safe_reports_dampen = 0;
+
     int prev;
     int abs_value;
     int cmp_value;
@@ -95,20 +96,23 @@ int solve(){
 dampen:
         if(c == '\n'){
             if(!damp){
-                safe_reports++;
+                result_part_1++;
             }
-            safe_reports_dampen++;
+            result_part_2++;
             reset(file, c);
         }
         prev = number;
     }
-    printf("Part 1 result: %d\n", safe_reports);
-    printf("Part 2 result: %d\n", safe_reports_dampen);
     return 0;
 }
 
 
 int main(){
-    read_data(2);
+    if(READ){
+        read_data(DAY);
+    }
+    clock_gettime(CLOCK_MONOTONIC, &start);
     solve();
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    print_results(result_part_1, result_part_2);
 }

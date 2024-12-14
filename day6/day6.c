@@ -33,7 +33,7 @@ typedef struct Guard_t{
 
 ENTITY ** layout;
 Guard_t * guards;
-static int result, result2;
+static int result_part_1, result_part_2;
 static short ncols, row, col;
 char c;
 
@@ -78,7 +78,7 @@ void append_node(ENTITY entity){
     layout[row][col] = entity;
 
     if(entity == OCCUPIED){
-        result ++;
+        result_part_1 ++;
         Guard_t* new_guard = malloc(sizeof(*new_guard));
         new_guard->x = row;
         new_guard->y = col;
@@ -117,8 +117,7 @@ void count_cols(FILE* file){
     rewind(file);
 }
 
-void read_data_into_memory(int day){
-    read_data(day);
+void read_data_into_memory(){
     FILE* file = fopen(INPUT_FILE,"r");
     count_cols(file);
     layout = malloc(ncols * sizeof(*layout));
@@ -165,7 +164,7 @@ void simulate_guard(int x, int y, int dx, int dy, bool obstruction_set, Prev_Pos
         switch(layout[x+dx][y+dy]){
             case CLEAR:
                 if(!obstruction_set){
-                    result ++;
+                    result_part_1 ++;
                     layout[x+dx][y+dy] = OCCUPIED;
                     Prev_Pos_t* new_pos = NULL; 
                     append_prev_pos(x,y,&new_pos,dx,dy);
@@ -188,7 +187,7 @@ void simulate_guard(int x, int y, int dx, int dy, bool obstruction_set, Prev_Pos
                     Prev_Pos_t* head = prev_pos;
                     while(head != NULL){
                         if(head->x == x && head->y == y && head->dx == dx && head->dy == dy){
-                            result2++;
+                            result_part_2++;
                             freepos(prev_pos);
                             return;
                         }
@@ -209,14 +208,17 @@ int solve(){
         guard = guard->next;
     }
     free_guard(guards);
-    printf("Part 1 result: %d\n", result);
-    printf("Part 2 result: %d\n", result2);
     return 0;
 }
 
 
 int main(){
-    read_data_into_memory(DAY);
+    if(READ){
+        read_data(DAY);
+    }
+    clock_gettime(CLOCK_MONOTONIC, &start);
+    read_data_into_memory();
     solve();
-
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    print_results(result_part_1, result_part_2);
 }

@@ -12,15 +12,15 @@
 Pos_t** antennas;
 static int row;
 static int col;
-static long result;
-static long result2;
+static long result_part_1;
+static long result_part_2;
 
 
 bool check_bound(int x, int y){
     return (x < row && x >= 0 && y < col && y >= 0);
 }
 
-void find_antinodes(int i, bool ***arrarr, bool result2){
+void find_antinodes(int i, bool ***arrarr, bool result_part_2){
     Pos_t * current_node = antennas[i];
     int current_node_x;
     int current_node_y;
@@ -40,10 +40,10 @@ void find_antinodes(int i, bool ***arrarr, bool result2){
                 if(check_bound(antinode_x, antinode_y)){
                     (*arrarr)[antinode_x][antinode_y] = true;
                 }
-                if(result2){
+                if(result_part_2){
                     (*arrarr)[current_node_x][current_node_y] = true;
                 }
-                while(check_bound(antinode_x+diff_x, antinode_y+diff_y) && result2){
+                while(check_bound(antinode_x+diff_x, antinode_y+diff_y) && result_part_2){
                     antinode_x += diff_x;
                     antinode_y += diff_y;
                     (*arrarr)[antinode_x][antinode_y] = true;
@@ -56,8 +56,7 @@ void find_antinodes(int i, bool ***arrarr, bool result2){
 }
 
 
-void read_data_into_memory(int day){
-    read_data(day);
+void read_data_into_memory(){
     antennas = malloc(sizeof(*antennas) * ASCII_TABLE_SIZE);
     for(int i = 0; i<ASCII_TABLE_SIZE; i++){
         antennas[i] = NULL;
@@ -99,7 +98,7 @@ int solve(){
     for(int i = 0; i<row; i++){
         for(int j = 0; j<col; j++){
             if(arrarr[i][j]){
-                result ++;
+                result_part_1 ++;
             } 
         }
     }
@@ -111,7 +110,7 @@ int solve(){
     for(int i = 0; i<row; i++){
         for(int j = 0; j<col; j++){
             if(arrarr[i][j]){
-                result2 ++;
+                result_part_2 ++;
             } 
         }
     }
@@ -124,13 +123,17 @@ int solve(){
         free_pos_list(&antennas[i]);
     }
     free(antennas);
-    printf("Part 1 result: %ld\n", result);
-    printf("Part 2 result: %ld\n", result2);
     return 0;
 }
 
 
 int main(){
-    read_data_into_memory(DAY);
-    return solve();
+    if(READ){
+        read_data(DAY);
+    }
+    clock_gettime(CLOCK_MONOTONIC, &start);
+    read_data_into_memory();
+    solve();
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    print_results(result_part_1, result_part_2);
 }
