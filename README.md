@@ -36,4 +36,4 @@ Juggernaut from X-MEN. Slowly losing my sanity. At least the code turned out alr
 
 ## DAY 7
 Wow the previous one made this feel great. It was evident that the you would have to use data types which can store big enough numbers, yet I succeed in declaring ONE function as int and it ruined me. I didn't understand why it did not work. I'm
-like they won't get me with that bullshit. Then I print the values and see the dogshit '-' sign and realise that they did in fact, get me with that bullshit.
+like they won't get me with that bullshit. Then I print the values and see the '-' sign and realise that they did in fact, get me with that bullshit.
