@@ -1,11 +1,20 @@
-# To run locally on machine:
+## To run locally on machine:
 
 1. git clone the repository to desired location.
-2. Create config.h file in repository at root directory
-3. Add the line "#define SESSIONID ("you're advent of code sessionid") this allows for automatic retrieval of your personal input. Don't share your sessionid accidentally by forgetting to add config.h in gitignore...
+2. Change "#define READ (0)" to "#define READ (1)" to enable input retreival with curl (for this to work, the two steps below are necessary)
+3. Create config.h file in repository at root directory
+4. Add the line "#define SESSIONID ("you're advent of code sessionid") this allows for automatic retrieval of your personal input. Don't share your sessionid accidentally by forgetting to add config.h in gitignore...
    You can retrieve your session ID by going to advent of code, inspect the webpage, applications -> cookies -> session. Copy the value into the config.h file. Please don't share this session ID with anyone.
-4. In terminal at root of repo run: "make && make test" to build and run.
+5. In terminal at root of repo run: "make && make test" to build and run. Once, you've run "make test" once, you can revert step 2 so you don't have to retrieve input from advent of code as this usually takes ~5 seconds.
 
+## Info
+The result is printed on the format:
+
+-----------Day XX-----------------
+Part 1 result: [result_value]
+Part 2 result: [result_value]
+Time:          [time for part 1 && 2 in seconds]
+---------------------------------
 
 # REFLECTIONS
 
