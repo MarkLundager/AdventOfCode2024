@@ -37,7 +37,7 @@ static int result, result2;
 static short ncols, row, col;
 char c;
 
-void append_pos(int x,int y, Prev_Pos_t** head,int dx, int dy){
+void append_prev_pos(int x,int y, Prev_Pos_t** head,int dx, int dy){
     Prev_Pos_t* new_pos = malloc(sizeof(*new_pos));
     new_pos->x = x;
     new_pos->y = y;
@@ -168,7 +168,7 @@ void simulate_guard(int x, int y, int dx, int dy, bool obstruction_set, Prev_Pos
                     result ++;
                     layout[x+dx][y+dy] = OCCUPIED;
                     Prev_Pos_t* new_pos = NULL; 
-                    append_pos(x,y,&new_pos,dx,dy);
+                    append_prev_pos(x,y,&new_pos,dx,dy);
                     int i = dx;
                     int j = dy;
                     rotate_90_cw(&i,&j);
@@ -176,7 +176,7 @@ void simulate_guard(int x, int y, int dx, int dy, bool obstruction_set, Prev_Pos
                 }
             case OCCUPIED:
                 if(obstruction_set && x+dx == obstr_x && y+dy == obstr_y){
-                    append_pos(x,y,&prev_pos, dx, dy);
+                    append_prev_pos(x,y,&prev_pos, dx, dy);
                     rotate_90_cw(&dx,&dy);
                     break;
                 }
@@ -194,7 +194,7 @@ void simulate_guard(int x, int y, int dx, int dy, bool obstruction_set, Prev_Pos
                         }
                     head = head->next;
                     }
-                    append_pos(x,y,&prev_pos, dx, dy);
+                    append_prev_pos(x,y,&prev_pos, dx, dy);
                 }
                 rotate_90_cw(&dx,&dy);
                 break;

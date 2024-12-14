@@ -13,3 +13,4 @@ all: $(foreach DAY, $(DAYS), ./day$(DAY)/day$(DAY))
 test:
 	./run.sh $(DAYS)
 
+#gcc -Wall -Werror -pedantic -g -o day8 day8.c ../helperfunctions.c -lcurl

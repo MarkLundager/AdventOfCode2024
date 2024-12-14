@@ -33,7 +33,13 @@ size_t read_data(unsigned short day){
     return success;
 }
 size_t write_to_file(void *buffer, size_t size, size_t nmemb, void *userp){
-    return fwrite(buffer, size, nmemb, (FILE*)userp);
+    if (((char*)buffer)[size*nmemb - 1] == '\n') {
+        fwrite(buffer, size, nmemb-1, (FILE*)userp);
+    }
+    else{
+        fwrite(buffer, size, nmemb, (FILE*)userp);
+    }
+    return nmemb*size;
 }
 
 // HASHMAP functions:
@@ -90,7 +96,7 @@ void free_hashmap(HashMapEntry_t hashmap[], size_t size) {
 
 
 
-// Linked_list functions:
+// //Linked list single value functions:
 void append(node_t **head, unsigned long number){
     node_t *new_node = malloc(sizeof(*new_node));
     new_node->next = NULL;
@@ -106,7 +112,6 @@ void append(node_t **head, unsigned long number){
     }
     current->next = new_node;
 }
-
 void free_linked_list(node_t **head) {
     node_t *current = *head;
     node_t *next;
@@ -117,7 +122,6 @@ void free_linked_list(node_t **head) {
         current = next;
     }
 }
-
 void swap(node_t** lhs, node_t **rhs){
     int temp;
     temp = (*rhs)->value;
@@ -125,7 +129,66 @@ void swap(node_t** lhs, node_t **rhs){
     (*lhs)->value = temp;
 }
 
+void append_pos_unique(Pos_t **head, int x, int y){
+    Pos_t *new_node = malloc(sizeof(*new_node));
+    new_node->next = NULL;
+    new_node->x = x;
+    new_node->y = y;
 
+    if(*head == NULL){
+        *head = new_node;
+        return;
+    }
+    Pos_t* current = *head;
+    while(current->next != NULL){
+        if(current->x == x && current-> y == y){
+            return;
+        }
+        current = current->next;
+    }
+    if(current->x == x && current-> y == y){
+        return;
+    }
+    current->next = new_node;
+}
+
+void append_pos(Pos_t **head, int x, int y){
+    Pos_t *new_node = malloc(sizeof(*new_node));
+    new_node->next = NULL;
+    new_node->x = x;
+    new_node->y = y;
+
+    if(*head == NULL){
+        *head = new_node;
+        return;
+    }
+    Pos_t* current = *head;
+    while(current->next != NULL){
+        current = current->next;
+    }
+    current->next = new_node;
+}
+
+void free_pos_list(Pos_t **head) {
+    Pos_t *current = *head;
+    Pos_t *next;
+
+    while (current != NULL) {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+}
+void swap_pos(Pos_t** lhs, Pos_t **rhs){
+    int temp_x;
+    int temp_y;
+    temp_x = (*rhs)->x;
+    temp_y = (*rhs)->y;
+    (*rhs)->x = (*lhs)->x;
+    (*rhs)->y = (*lhs)->y;
+    (*lhs)->x = temp_x;
+    (*lhs)->y = temp_y;
+}
 //          DAY X HELPER FUNCTIONS:
 
 
