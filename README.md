@@ -27,10 +27,16 @@ AFTER:
 7. In terminal at root of repo run: "make && make test" to build and run. Once, you've run "make test" once, you can revert step 2 so you don't have to retrieve input from advent of code as this usually takes ~5 seconds.
 
 
-## Info   (Time will not be represented correctly if curls fetches data (takes ~5 seconds), revert step 2 to see accurate time measures)
+## Info
+# Compiler flags
+All files compiled with the flags: gcc -Wall -Werror -pedantic -g -o
+
+# Time measurement (OBS)!!
+Unless step 2 is reverted, the measured time will not be accurate as it will include curl's retrieval from advent of code to local file. This takes around 4-5 seconds.
+
+# Result format
 The result is printed on the format below, if my solution could not calculate part 1 and 2 during the same run, individual times will be printed as well below total time. The individual time is calculated as total time subtracted by 
 parts that only involve the the other part (naturally).  
-All files compiled with the flags: gcc -Wall -Werror -pedantic -g -o
 
 \-----------Day XX-----------------  
 Part 1 result: [result_value]  
