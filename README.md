@@ -1,9 +1,10 @@
 # To run locally on machine:
 
 1. git clone the repository to desired location.
-2. create config.h file in repository at root directory
-3. add the line "#define SESSIONID [you're advent of code sessionid]" this allows for automatic retrieval of your personal input. Don't share your sessionid accidentally by forgetting to add config.h in gitignore...
-4. in terminal at root of repo: "make && make test" to build and run.
+2. Create config.h file in repository at root directory
+3. Add the line "#define SESSIONID ("you're advent of code sessionid") this allows for automatic retrieval of your personal input. Don't share your sessionid accidentally by forgetting to add config.h in gitignore...
+   You can retrieve your session ID by going to advent of code, inspect the webpage, applications -> cookies -> session. Copy the value into the config.h file. Please don't share this session ID with anyone.
+4. In terminal at root of repo run: "make && make test" to build and run.
 
 
 # REFLECTIONS
