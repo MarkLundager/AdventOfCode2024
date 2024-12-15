@@ -96,8 +96,6 @@ void read_data_into_memory(){
 }
 
 
-
-
 int main(){
     if(READ){
         read_data(DAY);

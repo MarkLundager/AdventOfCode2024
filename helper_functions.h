@@ -33,6 +33,14 @@ typedef struct HashMapEntry_t{
 } HashMapEntry_t;
 
 
+typedef struct tree_node_t{
+    bool parent;
+    unsigned long value;
+    struct tree_node_t* next;
+    struct tree_node_t* left;
+    struct tree_node_t* right;
+}tree_node_t;
+
 
 //Input retrieval
 size_t read_data(unsigned short day);
@@ -45,6 +53,12 @@ void print_seperate_times();
 
 
 //-----------------data structures----------------
+
+//TREES (WE LOVE EM)
+tree_node_t* create_tree_node(unsigned long value, bool parent);
+void split_tree_node(tree_node_t** tree_node, unsigned long first_child, unsigned long second_child);
+void append_root(tree_node_t **list, unsigned long value);
+void free_tree(tree_node_t* root);
 
 //Hashmap function
 unsigned int hash_function(int key, size_t size);

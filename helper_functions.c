@@ -120,6 +120,54 @@ void free_hashmap(HashMapEntry_t hashmap[], size_t size) {
 }
 
 
+void free_tree(tree_node_t* root) {
+    if (root == NULL) {
+        return;
+    }
+    
+    free_tree(root->left);
+    free_tree(root->right);
+    
+    free(root);
+}
+
+
+//Tree functions:
+void split_tree_node(tree_node_t** tree_node, unsigned long first_child, unsigned long second_child){
+    (*tree_node)->parent = true;
+    (*tree_node)->left = create_tree_node(first_child, false);
+    (*tree_node)->right = create_tree_node(second_child, false);
+}
+
+void append_root(tree_node_t **list, unsigned long value){
+    tree_node_t* new_root = create_tree_node(value, false);
+    if(*list == NULL){
+        *list = new_root;
+    }
+    else{
+        tree_node_t* current = *list;
+        while(current->next != NULL){
+            current = current->next;
+        }
+        current->next = new_root;
+    }
+}
+
+tree_node_t* create_tree_node(unsigned long value, bool parent){
+    tree_node_t* new_tree_node = malloc(sizeof(*new_tree_node));
+    if(new_tree_node != NULL){
+        new_tree_node->next = NULL;
+        new_tree_node->parent = parent;
+        new_tree_node->left = NULL;
+        new_tree_node->right = NULL;
+        new_tree_node->value = value;
+    }
+    return new_tree_node;
+}
+
+
+
+
 
 // //Linked list single value functions:
 void append(node_t **head, unsigned long number){
