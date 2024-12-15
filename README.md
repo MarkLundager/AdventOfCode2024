@@ -29,7 +29,7 @@ AFTER:
 
 # Info
 ## Compiler flags
-All files compiled with the flags: gcc -Wall -Werror -pedantic -g -o
+All files compiled with the flags: gcc -Wall -Werror -pedantic -g -o -lcurl -lm
 
 ## Time measurement (OBS)!!
 Unless step 2 is reverted, the measured time will not be accurate as it will include curl's retrieval from advent of code to local file. This takes around 4-5 seconds. However, data management is still taken into account as that is an essential part of solving each puzzle, but waiting for curl to load the data into a file "input.txt" is not, I think?
