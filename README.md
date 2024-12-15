@@ -28,7 +28,7 @@ AFTER:
 
 
 # Info
-## Compiler flags
+## Compiler and Linker flags
 All files compiled with the flags: gcc -Wall -Werror -pedantic -g -o -lcurl -lm
 
 ## Time measurement (OBS)!!
