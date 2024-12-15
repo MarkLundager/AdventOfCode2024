@@ -113,3 +113,11 @@ Went smoothly, still traumatised by DAY 6 so this was a chill one. I just read t
 Total Time:     0.103150 seconds  
 Part 1 time:    0.000253 seconds  
 Part 2 time:    0.102921 seconds  
+
+
+## DAY 10  
+Holy shit I loved this one. Part 2 required a single "result_part_2 ++;" line and then it worked! Very quick problem but I won't say no to a lil confidence boost.  
+  
+Part 1 result:  514  
+Part 2 result:  1162  
+Total Time:     0.000258 seconds  
