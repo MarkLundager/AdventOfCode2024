@@ -62,7 +62,8 @@ void append(node_t** head, unsigned long data);
 void free_pos_list(Pos_t **head);
 void swap_pos(Pos_t** lhs, Pos_t **rhs);
 void append_pos(Pos_t** head, int x, int y);
-void append_pos_unique(Pos_t** head, int x, int y);
+bool append_pos_unique(Pos_t** head, int x, int y);
+Pos_t*** create_pos_matrix(int size);
 
 //-----------DAY X HELPER FUNCTIONS----------------
 

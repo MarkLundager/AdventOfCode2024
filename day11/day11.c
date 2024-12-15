@@ -7,7 +7,7 @@
 #include <string.h>
 #include <limits.h>
 
-#define DAY (12)
+#define DAY (11)
 static long result_part_1;
 static long result_part_2;
 

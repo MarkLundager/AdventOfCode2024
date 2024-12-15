@@ -154,7 +154,10 @@ void swap(node_t** lhs, node_t **rhs){
     (*lhs)->value = temp;
 }
 
-void append_pos_unique(Pos_t **head, int x, int y){
+
+
+//Linked list 2d value
+bool append_pos_unique(Pos_t **head, int x, int y){
     Pos_t *new_node = malloc(sizeof(*new_node));
     new_node->next = NULL;
     new_node->x = x;
@@ -162,19 +165,22 @@ void append_pos_unique(Pos_t **head, int x, int y){
 
     if(*head == NULL){
         *head = new_node;
-        return;
+        return true;
     }
     Pos_t* current = *head;
     while(current->next != NULL){
         if(current->x == x && current-> y == y){
-            return;
+            free(new_node);
+            return false;
         }
         current = current->next;
     }
     if(current->x == x && current-> y == y){
-        return;
+        free(new_node);
+        return false;
     }
     current->next = new_node;
+    return true;
 }
 
 void append_pos(Pos_t **head, int x, int y){
@@ -213,6 +219,14 @@ void swap_pos(Pos_t** lhs, Pos_t **rhs){
     (*rhs)->y = (*lhs)->y;
     (*lhs)->x = temp_x;
     (*lhs)->y = temp_y;
+}
+
+Pos_t*** create_pos_matrix(int size){
+    Pos_t ***head = calloc(size, sizeof(*head));
+    for(int i = 0; i<size; i++){
+        head[i] = calloc(size, sizeof(*head[i]));
+    }
+    return head;
 }
 //          DAY X HELPER FUNCTIONS:
 
