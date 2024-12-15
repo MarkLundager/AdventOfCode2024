@@ -24,7 +24,7 @@ AFTER:
 ```c
 #define SESSIONID "[Your session ID for Advent of code]"
 ```
-7. In terminal at root of repo run: "make && make test" to build and run. Once, you've run "make test" once, you can revert step 2 so you don't have to retrieve input from advent of code as this usually takes ~5 seconds.
+7. In terminal at root of repo run: "make ; make test" to build and run. Once, you've run "make test" once, you can revert step 2 so you don't have to retrieve input from advent of code as this usually takes ~5 seconds.
 
 
 # Info
