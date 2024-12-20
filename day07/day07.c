@@ -43,6 +43,14 @@ bool recursion_part1(unsigned long target, node_t*tail, unsigned long value){
     if(tail->next == NULL){
         return (target == value + tail->value||target == value * tail->value);
     }
+
+    if(value + tail->value > target && value * tail->value > target) return false;
+    else if(value + tail->value > target){
+        return recursion_part1(target,tail->next, value * tail->value);
+    }
+    else if(value * tail->value > target){
+        return(recursion_part1(target,tail->next, value + tail->value));
+    }
     return (recursion_part1(target,tail->next, value + tail->value) 
     || recursion_part1(target,tail->next, value * tail->value));
 }
@@ -51,6 +59,8 @@ bool recursion_part2(unsigned long target, node_t*tail, unsigned long value){
     if(tail->next == NULL){
         return (target == value + tail->value||target == value * tail->value || target == new_operator(value, tail->value));
     }
+    if(new_operator(value, tail->value) > target && value + tail->value > target && value * tail->value > target) return false;
+    
     return (recursion_part2(target,tail->next, value + tail->value) 
     || recursion_part2(target,tail->next, value * tail->value) 
     || recursion_part2(target,tail->next, new_operator(value, tail->value)));
